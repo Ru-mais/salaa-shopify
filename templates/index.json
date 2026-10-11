@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "17912781907c4d4630": {
@@ -11,8 +20,8 @@
             "image": "shopify://shop_images/luxury-fashion-header.png",
             "image_2": "shopify://shop_images/luxury-fashion-header_1ae7cac2-c89c-4160-8ed8-bd9954b9eb90.png",
             "desktop_image_fit": "contain",
-            "mobile_image_fit": "cover",
-            "desktop_height": "100vh",
+            "mobile_image_fit": "contain",
+            "desktop_height": "auto",
             "image_focal_point": "center center",
             "show_product_title": false,
             "cta_label": "",
@@ -121,7 +130,16 @@
       "name": "Background Video",
       "settings": {
         "video": "shopify://files/videos/14647619_2160_3840_50fps (1).mp4",
-        "link": "shopify://collections/all"
+        "overlay_opacity": 25,
+        "subtitle": "Autumn / Winter 2026",
+        "title": "Modern Silhouette",
+        "cta_label": "Discover Collection",
+        "link": "shopify://collections/all",
+        "desktop_height": 100,
+        "mobile_height": 85,
+        "content_horizontal_alignment": "center",
+        "content_vertical_alignment": "center",
+        "text_alignment": "center"
       }
     }
   },
