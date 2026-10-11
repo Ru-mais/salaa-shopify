@@ -1,0 +1,144 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "17912781907c4d4630": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_cedf0c2_zcA39p": {
+          "type": "ai_gen_block_cedf0c2",
+          "settings": {
+            "product": "",
+            "product_link": "shopify://collections/all",
+            "image": "shopify://shop_images/luxury-fashion-header.png",
+            "image_2": "shopify://shop_images/luxury-fashion-header_1ae7cac2-c89c-4160-8ed8-bd9954b9eb90.png",
+            "desktop_image_fit": "contain",
+            "mobile_image_fit": "cover",
+            "desktop_height": "100vh",
+            "image_focal_point": "center center",
+            "show_product_title": false,
+            "cta_label": "",
+            "desktop_width_percent": 100,
+            "title_size": 20,
+            "text_color": "#fdfbf7"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_cedf0c2_zcA39p"
+      ],
+      "settings": {}
+    },
+    "1791277889f01bc327": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d4a2e27_nVrPdn": {
+          "type": "ai_gen_block_d4a2e27",
+          "settings": {
+            "marquee_text": "A considered collection, made to last",
+            "accessible_label": "Store announcement",
+            "separator": "✦",
+            "duration": 60,
+            "item_spacing": 48,
+            "text_size": 16,
+            "vertical_padding": 16,
+            "desktop_width_percent": 100,
+            "text_color": "#4a0e17",
+            "background_color": "#f5efe6"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d4a2e27_nVrPdn"
+      ],
+      "settings": {}
+    },
+    "collection_list_bD7cgR": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_Xy9LD9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "men"
+          }
+        },
+        "featured_collection_tjcz34": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "women"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_Xy9LD9",
+        "featured_collection_tjcz34"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 2,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_nxqewE": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "new-arival",
+        "products_to_show": 4,
+        "title": "<em>NEW ARRIVALS</em>",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-2",
+        "image_ratio": "portrait",
+        "image_shape": "blob",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "background_video_mEhLrR": {
+      "type": "background-video",
+      "name": "Background Video",
+      "settings": {
+        "video": "shopify://files/videos/14647619_2160_3840_50fps (1).mp4",
+        "link": "shopify://collections/all"
+      }
+    }
+  },
+  "order": [
+    "17912781907c4d4630",
+    "1791277889f01bc327",
+    "collection_list_bD7cgR",
+    "featured_collection_nxqewE",
+    "background_video_mEhLrR"
+  ]
+}

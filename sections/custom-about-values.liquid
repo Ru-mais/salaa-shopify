@@ -1,0 +1,244 @@
+{%- style -%}
+  .custom-about-values-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    font-family: var(--font-body-family);
+  }
+
+  .custom-about-values__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .custom-about-values__header {
+    text-align: left;
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+
+  .custom-about-values__subtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0.75;
+  }
+
+  .custom-about-values__title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .custom-about-values__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-about-values__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+  }
+
+  .custom-about-values__card {
+    background-color: {{ section.settings.card_bg_color }};
+    border: 1px solid {{ section.settings.text_color | color_modify: 'alpha', 0.12 }};
+    padding: 36px 28px;
+    border-radius: 6px;
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .custom-about-values__card:hover {
+    transform: translateY(-3px);
+    border-color: {{ section.settings.text_color | color_modify: 'alpha', 0.3 }};
+  }
+
+  .custom-about-values__number {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    opacity: 0.5;
+    margin-bottom: 16px;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .custom-about-values__card-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .custom-about-values__card-text {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin: 0;
+  }
+{%- endstyle -%}
+
+<div class="custom-about-values-{{ section.id }}">
+  <div class="custom-about-values__container">
+    
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="custom-about-values__header">
+        {%- if section.settings.subtitle != blank -%}
+          <div class="custom-about-values__subtitle">{{ section.settings.subtitle }}</div>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="custom-about-values__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="custom-about-values__grid">
+      {%- for block in section.blocks -%}
+        <div class="custom-about-values__card" {{ block.shopify_attributes }}>
+          {%- if block.settings.number != blank -%}
+            <span class="custom-about-values__number">{{ block.settings.number }}</span>
+          {%- endif -%}
+          {%- if block.settings.heading != blank -%}
+            <h3 class="custom-about-values__card-title">{{ block.settings.heading }}</h3>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <p class="custom-about-values__card-text">{{ block.settings.text }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Brand Values",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Core Principles"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "The Pillars of Azlia"
+    },
+    {
+      "type": "header",
+      "content": "Colors & Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FDFBF7"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#F4EFE6"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#4A0E17"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_item",
+      "name": "Value Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Pillar Index / Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Title",
+          "default": "Artisanal Excellence"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Master artisans dedicate decades to refining traditional techniques, creating pieces with precise craftsmanship."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Brand Values",
+      "blocks": [
+        {
+          "type": "value_item",
+          "settings": {
+            "number": "01",
+            "heading": "Artisanal Excellence",
+            "text": "Master artisans dedicate decades to refining traditional techniques, creating pieces with precise craftsmanship."
+          }
+        },
+        {
+          "type": "value_item",
+          "settings": {
+            "number": "02",
+            "heading": "Conscious Luxury",
+            "text": "Sourcing only ethically verified materials, we ensure every creation leaves a positive, lasting impact."
+          }
+        },
+        {
+          "type": "value_item",
+          "settings": {
+            "number": "03",
+            "heading": "Timeless Design",
+            "text": "Transcending seasonal trends, our aesthetic favors enduring silhouettes and refined proportions."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

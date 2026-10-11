@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "custom_contact": {
+      "type": "custom-contact",
+      "settings": {
+        "subtitle": "Client Care & Inquiries",
+        "title": "Get in Touch",
+        "description": "Our concierges are available to assist with private consultations, order inquiries, and bespoke requests.",
+        "info_heading": "Atelier Concierge",
+        "address": "740 Madison Avenue\nNew York, NY 10065",
+        "email": "concierge@azlia.com",
+        "phone": "+1 (800) 555-0199",
+        "hours": "Monday – Saturday: 10am – 7pm\nSunday: By Private Appointment",
+        "submit_button_label": "Send Message",
+        "bg_color": "#FDFBF7",
+        "card_bg_color": "#F4EFE6",
+        "text_color": "#4A0E17",
+        "button_bg_color": "#4A0E17",
+        "button_text_color": "#FDFBF7",
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    },
+    "custom_faq": {
+      "type": "custom-faq",
+      "settings": {
+        "subtitle": "Frequently Asked Questions",
+        "title": "Common Assistance",
+        "bg_color": "#FDFBF7",
+        "card_bg_color": "#F4EFE6",
+        "text_color": "#4A0E17",
+        "padding_top": 40,
+        "padding_bottom": 80
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are your shipping and white-glove delivery timelines?",
+            "answer": "Standard domestic orders arrive within 3-5 business days. Express white-glove delivery is available for same-day dispatch on select metropolitan orders."
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I schedule a private atelier consultation?",
+            "answer": "Private appointments can be reserved directly through our concierge team by email or phone. We offer both virtual and in-person viewings."
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return & exchange policy?",
+            "answer": "Complimentary returns and exchanges are accepted within 30 days of receipt for unused items in original packaging."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3"
+      ]
+    }
+  },
+  "order": [
+    "custom_contact",
+    "custom_faq"
+  ]
+}

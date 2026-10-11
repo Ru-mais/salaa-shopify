@@ -1,0 +1,210 @@
+{% doc %}
+  @prompt
+    create a hero clickable  image that we can can click and goes to product page , not a single product whe i click the image 
+    it need to goes to the product page 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign ai_product_url = block.settings.product.url | default: block.settings.product_link %}
+{% assign ai_product_title = block.settings.product.title | default: 'View product' %}
+
+{% style %}
+  .ai-product-hero-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    {% if block.settings.desktop_height == 'auto' %}
+      height: auto;
+    {% else %}
+      height: {{ block.settings.desktop_height | default: '100vh' }};
+    {% endif %}
+  }
+  .ai-product-hero-{{ ai_gen_id }}__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+  }
+  .ai-product-hero-{{ ai_gen_id }}__image-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: #f3f3f3;
+  }
+  .ai-product-hero-{{ ai_gen_id }}__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-position: {{ block.settings.image_focal_point | default: 'center center' }};
+  }
+  .ai-product-hero-{{ ai_gen_id }}__image--desktop {
+    object-fit: {{ block.settings.desktop_image_fit | default: 'cover' }};
+  }
+  .ai-product-hero-{{ ai_gen_id }}__image--mobile {
+    display: none;
+    object-fit: {{ block.settings.mobile_image_fit | default: 'cover' }};
+  }
+  {% if block.settings.image != blank and block.settings.image_2 != blank %}
+    @media screen and (max-width: 749px) {
+      .ai-product-hero-{{ ai_gen_id }}__image--desktop { display: none; }
+      .ai-product-hero-{{ ai_gen_id }}__image--mobile { display: block; }
+    }
+  {% endif %}
+  .ai-product-hero-{{ ai_gen_id }}__placeholder {
+    position: relative;
+    display: flex;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    align-items: center;
+    justify-content: center;
+  }
+  .ai-product-hero-{{ ai_gen_id }}__placeholder svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .ai-product-hero-{{ ai_gen_id }}__empty {
+    position: absolute;
+    right: 12px;
+    bottom: 16px;
+    left: 12px;
+    color: #444;
+    text-align: center;
+    font-size: 13px;
+  }
+  .ai-product-hero-{{ ai_gen_id }}__caption {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+  }
+  .ai-product-hero-{{ ai_gen_id }}__title {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+  }
+  .ai-product-hero-{{ ai_gen_id }}__cta {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 12px 25px;
+    border: 1px solid {{ block.settings.text_color }};
+    color: {{ block.settings.text_color }};
+    background: transparent;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+  .ai-product-hero-{{ ai_gen_id }}__link:focus-visible {
+    outline: 2px solid {{ block.settings.text_color }};
+    outline-offset: 4px;
+  }
+  @media screen and (max-width: 749px) {
+    .ai-product-hero-{{ ai_gen_id }} { width: 100%; }
+  }
+{% endstyle %}
+
+<div class="ai-product-hero-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if ai_product_url != blank %}<a class="ai-product-hero-{{ ai_gen_id }}__link" href="{{ ai_product_url }}" aria-label="View {{ ai_product_title | escape }}">{% else %}<div class="ai-product-hero-{{ ai_gen_id }}__link">{% endif %}
+    <div class="ai-product-hero-{{ ai_gen_id }}__image-wrap">
+      {% if block.settings.image != blank %}
+        <img class="ai-product-hero-{{ ai_gen_id }}__image ai-product-hero-{{ ai_gen_id }}__image--desktop" src="{{ block.settings.image | image_url: width: 2400 }}" alt="{{ block.settings.image.alt | default: ai_product_title | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+      {% elsif block.settings.product.featured_image != blank %}
+        <img class="ai-product-hero-{{ ai_gen_id }}__image ai-product-hero-{{ ai_gen_id }}__image--desktop" src="{{ block.settings.product.featured_image | image_url: width: 2400 }}" alt="{{ block.settings.product.featured_image.alt | default: ai_product_title | escape }}" loading="lazy" width="{{ block.settings.product.featured_image.width }}" height="{{ block.settings.product.featured_image.height }}">
+      {% endif %}
+      
+      {% if block.settings.image_2 != blank %}
+        <img class="ai-product-hero-{{ ai_gen_id }}__image ai-product-hero-{{ ai_gen_id }}__image--mobile" src="{{ block.settings.image_2 | image_url: width: 1200 }}" alt="{{ block.settings.image_2.alt | default: ai_product_title | escape }}" loading="lazy" width="{{ block.settings.image_2.width }}" height="{{ block.settings.image_2.height }}">
+      {% endif %}
+      
+      {% if block.settings.image == blank and block.settings.product.featured_image == blank %}
+        <div class="ai-product-hero-{{ ai_gen_id }}__placeholder">
+          {{ 'product-apparel-1' | placeholder_svg_tag }}
+          <span class="ai-product-hero-{{ ai_gen_id }}__empty">Add a hero image and select a product or product page link.</span>
+        </div>
+      {% endif %}
+    </div>
+    {% if block.settings.product != blank or block.settings.cta_label != blank %}
+      <div class="ai-product-hero-{{ ai_gen_id }}__caption">
+        {% if block.settings.show_product_title and block.settings.product != blank %}<h2 class="ai-product-hero-{{ ai_gen_id }}__title">{{ block.settings.product.title | escape }}</h2>{% endif %}
+        {% if block.settings.cta_label != blank %}<span class="ai-product-hero-{{ ai_gen_id }}__cta">{{ block.settings.cta_label | escape }}</span>{% endif %}
+      </div>
+    {% endif %}
+  {% if ai_product_url != blank %}</a>{% else %}</div>{% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Clickable product hero",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product to link" },
+    { "type": "url", "id": "product_link", "label": "Product page link" },
+    { "type": "image_picker", "id": "image", "label": "Desktop Hero image" },
+    { "type": "image_picker", "id": "image_2", "label": "Mobile Hero image" },
+    {
+      "type": "select",
+      "id": "desktop_image_fit",
+      "label": "Desktop image fit",
+      "options": [
+        { "value": "cover", "label": "Cover / Crop to fill" },
+        { "value": "contain", "label": "Contain / Fit whole image (No crop)" },
+        { "value": "fill", "label": "Stretch to fill" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_fit",
+      "label": "Mobile image fit",
+      "options": [
+        { "value": "cover", "label": "Cover / Crop to fill" },
+        { "value": "contain", "label": "Contain / Fit whole image (No crop)" },
+        { "value": "fill", "label": "Stretch to fill" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Section height",
+      "options": [
+        { "value": "100vh", "label": "Full screen height (100vh)" },
+        { "value": "80vh", "label": "Large (80vh)" },
+        { "value": "60vh", "label": "Medium (60vh)" },
+        { "value": "auto", "label": "Adapt to image height" }
+      ],
+      "default": "100vh"
+    },
+    {
+      "type": "select",
+      "id": "image_focal_point",
+      "label": "Image focal point (Position)",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "top center", "label": "Top" },
+        { "value": "bottom center", "label": "Bottom" },
+        { "value": "center left", "label": "Left" },
+        { "value": "center right", "label": "Right" }
+      ],
+      "default": "center center"
+    },
+    { "type": "checkbox", "id": "show_product_title", "label": "Show product title", "default": true },
+    { "type": "text", "id": "cta_label", "label": "Link label", "default": "Discover" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "title_size", "label": "Title size", "min": 14, "max": 32, "step": 2, "unit": "px", "default": 20 },
+    { "type": "color", "id": "text_color", "label": "Text and border", "default": "#121212" }
+  ],
+  "presets": [{ "name": "Clickable product hero" }],
+  "tag": null,
+  "class": "clickable-product-hero"
+}
+{% endschema %}

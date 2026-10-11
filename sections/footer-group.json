@@ -1,0 +1,100 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "custom-footer": {
+      "type": "custom-footer",
+      "settings": {
+        "bg_color": "#4A0E17",
+        "text_color": "#FDFBF7",
+        "huge_text_color": "#3B0A11"
+      },
+      "blocks": {
+        "heading_1": {
+          "type": "column_heading",
+          "settings": {
+            "heading": "Explore"
+          }
+        },
+        "link_1_1": {
+          "type": "link",
+          "settings": {
+            "title": "About Azlia",
+            "url": "shopify:\/\/collections\/all"
+          }
+        },
+        "link_1_2": {
+          "type": "link",
+          "settings": {
+            "title": "Contact",
+            "url": "shopify:\/\/collections\/all"
+          }
+        },
+        "link_1_3": {
+          "type": "link",
+          "settings": {
+            "title": "FAQ",
+            "url": "shopify:\/\/collections\/all"
+          }
+        },
+        "heading_2": {
+          "type": "column_heading",
+          "settings": {
+            "heading": "Legal & Policy"
+          }
+        },
+        "link_2_1": {
+          "type": "link",
+          "settings": {
+            "title": "Shipping & Delivery",
+            "url": "shopify:\/\/collections\/all"
+          }
+        },
+        "link_2_2": {
+          "type": "link",
+          "settings": {
+            "title": "Return & Refund",
+            "url": "shopify:\/\/collections\/all"
+          }
+        },
+        "link_2_3": {
+          "type": "link",
+          "settings": {
+            "title": "Terms of Service",
+            "url": "shopify:\/\/collections\/all"
+          }
+        },
+        "link_2_4": {
+          "type": "link",
+          "settings": {
+            "title": "Privacy Policy",
+            "url": "shopify:\/\/collections\/all"
+          }
+        }
+      },
+      "block_order": [
+        "heading_1",
+        "link_1_1",
+        "link_1_2",
+        "link_1_3",
+        "heading_2",
+        "link_2_1",
+        "link_2_2",
+        "link_2_3",
+        "link_2_4"
+      ]
+    }
+  },
+  "order": [
+    "custom-footer"
+  ]
+}

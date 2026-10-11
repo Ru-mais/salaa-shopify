@@ -1,0 +1,121 @@
+{
+  "sections": {
+    "about_hero": {
+      "type": "custom-about-hero",
+      "settings": {
+        "subtitle": "Heritage & Vision",
+        "title": "Uncompromising Craftsmanship",
+        "story": "Azlia creates timeless luxury garments handcrafted by master artisans. Driven by minimalism, proportion, and enduring quality.",
+        "bg_color": "#FDFBF7",
+        "text_color": "#4A0E17",
+        "padding_top": 56,
+        "padding_bottom": 48
+      }
+    },
+    "about_stats": {
+      "type": "custom-about-stats",
+      "settings": {
+        "bg_color": "#FDFBF7",
+        "text_color": "#4A0E17",
+        "padding_top": 24,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "stat_1": {
+          "type": "stat_item",
+          "settings": {
+            "value": "100%",
+            "label": "Artisanal Handcraft"
+          }
+        },
+        "stat_2": {
+          "type": "stat_item",
+          "settings": {
+            "value": "15+",
+            "label": "Master Craftsmen"
+          }
+        },
+        "stat_3": {
+          "type": "stat_item",
+          "settings": {
+            "value": "30 Yrs",
+            "label": "Atelier Heritage"
+          }
+        },
+        "stat_4": {
+          "type": "stat_item",
+          "settings": {
+            "value": "0%",
+            "label": "Carbon Footprint"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ]
+    },
+    "about_values": {
+      "type": "custom-about-values",
+      "settings": {
+        "subtitle": "Core Principles",
+        "title": "The Pillars of Azlia",
+        "bg_color": "#FDFBF7",
+        "card_bg_color": "#F4EFE6",
+        "text_color": "#4A0E17",
+        "padding_top": 36,
+        "padding_bottom": 56
+      },
+      "blocks": {
+        "value_1": {
+          "type": "value_item",
+          "settings": {
+            "number": "01",
+            "heading": "Artisanal Excellence",
+            "text": "Master artisans dedicate decades to refining traditional techniques, creating pieces with precise craftsmanship."
+          }
+        },
+        "value_2": {
+          "type": "value_item",
+          "settings": {
+            "number": "02",
+            "heading": "Conscious Luxury",
+            "text": "Sourcing only ethically verified materials, we ensure every creation leaves a positive, lasting impact."
+          }
+        },
+        "value_3": {
+          "type": "value_item",
+          "settings": {
+            "number": "03",
+            "heading": "Timeless Design",
+            "text": "Transcending seasonal trends, our aesthetic favors enduring silhouettes and refined proportions."
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3"
+      ]
+    },
+    "about_quote": {
+      "type": "custom-about-quote",
+      "settings": {
+        "quote": "True luxury is not about excess, but about harmony, precision, and soul.",
+        "author": "VOGUE International",
+        "bg_color": "#F4EFE6",
+        "text_color": "#4A0E17",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": [
+    "about_hero",
+    "about_stats",
+    "about_values",
+    "about_quote"
+  ]
+}

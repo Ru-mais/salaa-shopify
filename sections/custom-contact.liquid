@@ -1,0 +1,574 @@
+{%- style -%}
+  .custom-contact-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    font-family: var(--font-body-family);
+  }
+
+  .custom-contact__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  .custom-contact__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 60px;
+  }
+
+  .custom-contact__badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: {{ section.settings.text_color | color_modify: 'alpha', 0.06 }};
+    border: 1px solid {{ section.settings.text_color | color_modify: 'alpha', 0.15 }};
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: {{ section.settings.text_color }};
+  }
+
+  .custom-contact__title {
+    font-size: clamp(32px, 5vw, 48px);
+    color: {{ section.settings.text_color }};
+    margin: 0 0 18px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .custom-contact__description {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin: 0;
+  }
+
+  /* Main Split Layout */
+  .custom-contact__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  @media screen and (min-width: 900px) {
+    .custom-contact__grid {
+      grid-template-columns: 1fr 1.3fr;
+      gap: 48px;
+      align-items: stretch;
+    }
+  }
+
+  /* Left Side: Concierge Info Card */
+  .custom-contact__info {
+    background-color: {{ section.settings.card_bg_color }};
+    border: 1px solid {{ section.settings.text_color | color_modify: 'alpha', 0.12 }};
+    padding: clamp(28px, 4vw, 48px);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.03);
+  }
+
+  .custom-contact__info-top {
+    margin-bottom: 30px;
+  }
+
+  .custom-contact__info-heading {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 28px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid {{ section.settings.text_color | color_modify: 'alpha', 0.1 }};
+    padding-bottom: 16px;
+  }
+
+  .custom-contact__info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .custom-contact__info-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .custom-contact__info-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: {{ section.settings.text_color | color_modify: 'alpha', 0.08 }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: {{ section.settings.text_color }};
+  }
+
+  .custom-contact__info-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  .custom-contact__info-label {
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    opacity: 0.65;
+    margin-bottom: 4px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .custom-contact__info-value {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .custom-contact__info-value a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dashed {{ section.settings.text_color | color_modify: 'alpha', 0.4 }};
+    transition: border-color 0.3s ease;
+  }
+
+  .custom-contact__info-value a:hover {
+    border-bottom-color: {{ section.settings.text_color }};
+  }
+
+  /* Right Side: Form Card with Luxury Floating Labels */
+  .custom-contact__form-wrap {
+    background-color: {{ section.settings.card_bg_color }};
+    border: 1px solid {{ section.settings.text_color | color_modify: 'alpha', 0.12 }};
+    padding: clamp(28px, 4vw, 48px);
+    border-radius: 12px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.03);
+  }
+
+  .custom-contact__form-title {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+
+  .custom-contact__form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media screen and (min-width: 600px) {
+    .custom-contact__form-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Floating Label Field Container */
+  .custom-contact__form .floating-field {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .custom-contact__form .floating-field input,
+  .custom-contact__form .floating-field textarea {
+    width: 100%;
+    background-color: {{ section.settings.bg_color }};
+    border: 1.5px solid {{ section.settings.text_color | color_modify: 'alpha', 0.2 }};
+    color: {{ section.settings.text_color }};
+    padding: 24px 16px 8px 16px;
+    font-size: 15px;
+    outline: none;
+    border-radius: 6px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  .custom-contact__form .floating-field textarea {
+    resize: vertical;
+    min-height: 120px;
+    padding-top: 28px;
+  }
+
+  /* Label Styling */
+  .custom-contact__form .floating-field label {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    font-size: 13px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.6;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* Floating animation when input is focused or has content */
+  .custom-contact__form .floating-field input:focus,
+  .custom-contact__form .floating-field textarea:focus {
+    border-color: {{ section.settings.text_color }};
+    box-shadow: 0 0 0 4px {{ section.settings.text_color | color_modify: 'alpha', 0.08 }};
+  }
+
+  .custom-contact__form .floating-field input:focus ~ label,
+  .custom-contact__form .floating-field input:not(:placeholder-shown) ~ label,
+  .custom-contact__form .floating-field textarea:focus ~ label,
+  .custom-contact__form .floating-field textarea:not(:placeholder-shown) ~ label {
+    top: 6px;
+    font-size: 10px;
+    opacity: 0.85;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+  }
+
+  .custom-contact__submit-btn {
+    width: 100%;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    border: none;
+    padding: 18px 32px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 6px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .custom-contact__submit-btn:hover {
+    opacity: 0.93;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px {{ section.settings.button_bg_color | color_modify: 'alpha', 0.25 }};
+  }
+
+  .custom-contact__submit-btn:active {
+    transform: translateY(0);
+  }
+
+  .custom-contact__success {
+    padding: 16px 20px;
+    background-color: rgba(74, 14, 23, 0.08);
+    border: 1px solid {{ section.settings.text_color }};
+    border-radius: 6px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    text-align: center;
+  }
+{%- endstyle -%}
+
+<div class="custom-contact-{{ section.id }}">
+  <div class="custom-contact__container">
+    
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="custom-contact__header">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="custom-contact__badge">{{ section.settings.subtitle }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h1 class="custom-contact__title">{{ section.settings.title }}</h1>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <p class="custom-contact__description">{{ section.settings.description }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="custom-contact__grid">
+      
+      <!-- Store Info Column -->
+      <div class="custom-contact__info">
+        <div class="custom-contact__info-top">
+          {%- if section.settings.info_heading != blank -%}
+            <h2 class="custom-contact__info-heading">{{ section.settings.info_heading }}</h2>
+          {%- endif -%}
+
+          <div class="custom-contact__info-list">
+            {%- if section.settings.address != blank -%}
+              <div class="custom-contact__info-item">
+                <div class="custom-contact__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div>
+                  <span class="custom-contact__info-label">Atelier & Boutique</span>
+                  <div class="custom-contact__info-value">{{ section.settings.address | newline_to_br }}</div>
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.email != blank -%}
+              <div class="custom-contact__info-item">
+                <div class="custom-contact__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </div>
+                <div>
+                  <span class="custom-contact__info-label">Direct Concierge</span>
+                  <div class="custom-contact__info-value">
+                    <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.phone != blank -%}
+              <div class="custom-contact__info-item">
+                <div class="custom-contact__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                </div>
+                <div>
+                  <span class="custom-contact__info-label">Telephone</span>
+                  <div class="custom-contact__info-value">
+                    <a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.hours != blank -%}
+              <div class="custom-contact__info-item">
+                <div class="custom-contact__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                </div>
+                <div>
+                  <span class="custom-contact__info-label">Opening Hours</span>
+                  <div class="custom-contact__info-value">{{ section.settings.hours | newline_to_br }}</div>
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form Column with Floating Labels -->
+      <div class="custom-contact__form-wrap">
+        <h2 class="custom-contact__form-title">Send a Message</h2>
+        {%- form 'contact', id: 'CustomContactForm', class: 'custom-contact__form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="custom-contact__success">
+              {{ 'templates.contact.form.post_success' | t }}
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="custom-contact__success" style="border-color: #8C2D38; color: #8C2D38;">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="custom-contact__form-row">
+            <div class="floating-field">
+              <input
+                type="text"
+                id="ContactForm-name-{{ section.id }}"
+                name="contact[Name]"
+                placeholder=" "
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                required
+              >
+              <label for="ContactForm-name-{{ section.id }}">Full Name *</label>
+            </div>
+
+            <div class="floating-field">
+              <input
+                type="email"
+                id="ContactForm-email-{{ section.id }}"
+                name="contact[email]"
+                placeholder=" "
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                required
+              >
+              <label for="ContactForm-email-{{ section.id }}">Email Address *</label>
+            </div>
+          </div>
+
+          <div class="floating-field">
+            <input
+              type="tel"
+              id="ContactForm-phone-{{ section.id }}"
+              name="contact[Phone]"
+              placeholder=" "
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+            >
+            <label for="ContactForm-phone-{{ section.id }}">Phone Number (Optional)</label>
+          </div>
+
+          <div class="floating-field">
+            <textarea
+              rows="4"
+              id="ContactForm-body-{{ section.id }}"
+              name="contact[Message]"
+              placeholder=" "
+              required
+            >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            <label for="ContactForm-body-{{ section.id }}">Your Message *</label>
+          </div>
+
+          <button type="submit" class="custom-contact__submit-btn">
+            <span>{{ section.settings.submit_button_label }}</span>
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        {%- endform -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Luxury Contact Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle Badge",
+      "default": "Client Care & Inquiries"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Get in Touch"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Our concierges are available to assist with private consultations, order inquiries, and bespoke requests."
+    },
+    {
+      "type": "header",
+      "content": "Store Information"
+    },
+    {
+      "type": "text",
+      "id": "info_heading",
+      "label": "Info Heading",
+      "default": "Atelier Concierge"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "740 Madison Avenue\nNew York, NY 10065"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "concierge@azlia.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "+1 (800) 555-0199"
+    },
+    {
+      "type": "textarea",
+      "id": "hours",
+      "label": "Opening Hours",
+      "default": "Monday – Saturday: 10am – 7pm\nSunday: By Private Appointment"
+    },
+    {
+      "type": "header",
+      "content": "Form Settings"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_label",
+      "label": "Submit Button Label",
+      "default": "Send Message"
+    },
+    {
+      "type": "header",
+      "content": "Colors & Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FDFBF7"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#F4EFE6"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#4A0E17"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background",
+      "default": "#4A0E17"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FDFBF7"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Contact Section"
+    }
+  ]
+}
+{% endschema %}
