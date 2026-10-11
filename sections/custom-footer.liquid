@@ -202,13 +202,25 @@
       <div class="custom-footer__social">
         {%- if settings.social_instagram_link != blank -%}
           <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">
-            {%- render 'icon-instagram' -%}
+            <span class="svg-wrapper">{{- 'icon-instagram.svg' | inline_asset_content -}}</span>
           </a>
         {%- endif -%}
         
         {%- if settings.social_facebook_link != blank -%}
           <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook">
-            {%- render 'icon-facebook' -%}
+            <span class="svg-wrapper">{{- 'icon-facebook.svg' | inline_asset_content -}}</span>
+          </a>
+        {%- endif -%}
+
+        {%- if settings.social_tiktok_link != blank -%}
+          <a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener" aria-label="TikTok">
+            <span class="svg-wrapper">{{- 'icon-tiktok.svg' | inline_asset_content -}}</span>
+          </a>
+        {%- endif -%}
+
+        {%- if settings.social_youtube_link != blank -%}
+          <a href="{{ settings.social_youtube_link }}" target="_blank" rel="noopener" aria-label="YouTube">
+            <span class="svg-wrapper">{{- 'icon-youtube.svg' | inline_asset_content -}}</span>
           </a>
         {%- endif -%}
       </div>
